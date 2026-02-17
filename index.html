@@ -36,7 +36,7 @@ img {
 <img id="slide" src="foto1.jpg" class="fade">
 
 <audio id="bgm" loop preload="auto">
-  <source src="musica.mp3" type="audio/mpeg">
+  <source src="mosica.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -62,7 +62,7 @@ setInterval(() => {
 
 const audio = document.getElementById("bgm");
 
-function iniciarMusica() {
+function iniciarMosica() {
   audio.play().catch(() => {});
   document.removeEventListener("click", iniciarMusica);
 }
@@ -72,3 +72,4 @@ document.addEventListener("click", iniciarMusica);
 
 </body>
 </html>
+
