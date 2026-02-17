@@ -40,8 +40,35 @@ Mirela, 3 meses ao seu lado ❤️
 </div>
 
 <audio id="bgm" loop>
-<source src="mosica.mp3" type="audio/mpeg">
+  <source src="mosica.mp3" type="audio/mpeg">
 </audio>
+
+<button id="playBtn" 
+style="
+position:absolute;
+top:80%;
+left:50%;
+transform:translate(-50%,-50%);
+padding:15px 30px;
+font-size:20px;
+background:red;
+color:white;
+border:none;
+border-radius:30px;
+cursor:pointer;">
+🎵 Toque para ativar nossa música
+</button>
+
+<script>
+const audio = document.getElementById("bgm");
+const btn = document.getElementById("playBtn");
+
+btn.addEventListener("click", function(){
+  audio.play();
+  btn.style.display = "none";
+});
+</script>
+
 
 <script>
 window.onload = function(){
@@ -99,4 +126,5 @@ document.getElementById("bgm").play();
 
 </body>
 </html>
+
 
