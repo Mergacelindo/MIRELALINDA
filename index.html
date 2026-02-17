@@ -1,115 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Mirela ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Você ❤️</title>
+
 <style>
-body{
-margin:0;
-background:black;
-color:white;
-text-align:center;
-font-family:Arial;
-overflow:hidden;
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  overflow: hidden;
 }
-img{
-width:100%;
-height:100vh;
-object-fit:cover;
-position:absolute;
-top:0;
-left:0;
-transition:opacity 2s;
+
+img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
 }
-.texto{
-position:absolute;
-top:40%;
-width:100%;
-font-size:40px;
-font-weight:bold;
-text-shadow:0 0 20px red;
+
+.fade {
+  animation: fade 2s ease-in-out;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 </style>
 </head>
+
 <body>
 
-<img id="slide" src="foto1.jpg">
+<img id="slide" src="foto1.jpg" class="fade">
 
-<div class="texto" id="frase">
-Mirela, 3 meses ao seu lado ❤️
-</div>
-<audio id="bgm" autoplay loop>
-  <source src="mosica.mp3" type="audio/mpeg">
+<audio id="bgm" loop preload="auto">
+  <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-document.addEventListener("click", function() {
-    var audio = document.getElementById("bgm");
-    audio.play();
-});
-</script>
-
-
-<script>
-window.onload = function(){
-let audio = document.getElementById("bgm");
-
-document.body.addEventListener("click", function(){
-audio.play();
-});
-}
-</script>
-
-
-<script>
-
-let imagens = [
-"foto1.jpg",
-"foto2.jpg",
-"foto3.jpg",
-"foto4.jpg",
-"foto5.jpg",
-"foto6.jpg"
+const imagens = [
+  "foto1.jpg",
+  "foto2.jpg",
+  "foto3.jpg",
+  "foto4.jpg"
+   "foto5.jpg"
+   "foto6.jpg"
 ];
 
-let frases = [
-"Mirela...",
-"3 meses com você...",
-"Foram os melhores da minha vida.",
-"Você mudou meu mundo.",
-"Eu escolheria você mil vezes.",
-"Eu te amo mais que tudo ❤️"
-];
+let index = 0;
+const slide = document.getElementById("slide");
 
-let i = 0;
+setInterval(() => {
+  index = (index + 1) % imagens.length;
+  slide.src = imagens[index];
+  slide.classList.remove("fade");
+  void slide.offsetWidth;
+  slide.classList.add("fade");
+}, 4000);
 
-function trocar(){
-i++;
-if(i >= imagens.length){
-i = 0;
-}
-document.getElementById("slide").style.opacity = 0;
-setTimeout(function(){
-document.getElementById("slide").src = imagens[i];
-document.getElementById("frase").innerHTML = frases[i];
-document.getElementById("slide").style.opacity = 1;
-},1000);
+const audio = document.getElementById("bgm");
+
+function iniciarMusica() {
+  audio.play().catch(() => {});
+  document.removeEventListener("click", iniciarMusica);
 }
 
-setInterval(trocar,4000);
-
-document.body.addEventListener("click", function(){
-document.getElementById("bgm").play();
-});
-
+document.addEventListener("click", iniciarMusica);
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
